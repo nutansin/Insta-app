@@ -1,0 +1,21 @@
+.header-wrapper {
+
+}
+.header-wrapper .logo-wrapper img:nth-child(1){
+    width: 24px;
+    height: 24px;
+}
+.header-wrapper .logo-wrapper img:nth-child(2){
+    width: 103px;
+    height: 29px;
+}
+.header-wrapper .search-wrapper input{
+    width: 215px;
+    height: 28px;
+    border: 1px solid lightgrey;
+    padding: 5px;
+}
+.header-wrapper .profile-info-wrapper img {
+    width: 24px;
+    height: 24px;
+}
