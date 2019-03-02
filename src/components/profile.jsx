@@ -31,7 +31,6 @@ import Header from './header';
 	render() {
 		return (
 			<div>
-				<Header />
 				{this.state.posts.map((post) =>
 					<div className="main-header">
 						<div className="inner">

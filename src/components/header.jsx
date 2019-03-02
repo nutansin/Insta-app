@@ -1,9 +1,19 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Link } from "react-router-dom";
-import Route from 'react-router-dom/Route';
-import Profile from './profile';
-import Posts from './posts';
-import '../css/header.css';
+import Profile from './profile'
+import Posts from './posts'
+import '../css/header.css'
+import insta_logo from './../img/insta_logo.png'
+import insta_text from './../img/insta_text.png'
+import explore from './../img/explore.png'
+import profile from './../img/profile.png'
+import like from './../img/like.png'
+
+
+import {
+  Link
+} from 'react-router-dom';
+
+
 
 export class Header extends Component {
   constructor(props) {
@@ -23,20 +33,20 @@ export class Header extends Component {
         </Route> */}
             <div className="header-wrapper">
               <div className="logo-wrapper inline-wrapper">
-              {/* <Link to="/"> */}
-                  <img src={require('../img/insta_logo.png')} alt=""/>
-                  <img src={require('../img/insta_text.png')} alt=""/>
-              {/* </Link> */}
+              <Link to="/">
+                  <img src={insta_logo} alt=""/>
+                  <img src={insta_text} alt=""/>
+              </Link>
               </div>
               <div className="search-wrapper inline-wrapper">
                   <input type="text" placeholder="Search"/>
               </div>
               <div className="profile-info-wrapper inline-wrapper">
-                  <img src={require('../img/explore.png')} alt=""/>
-                  <img src={require('../img/like.png')} alt=""/>
-                  <Link to="/profile">
-                  <img src={require('../img/profile.png')} alt=""/>
-                  {/* </Link> */}
+                  <img src={explore} alt=""/>
+                  <img src={like} alt=""/>
+                  <Link to="/profileLink">
+                  <img src={profile} />
+                  </Link>
               </div>
             </div>
         </div>
