@@ -1,0 +1,66 @@
+* {
+    padding:0;
+    margin: 0;
+}
+body {
+    font-family: sans-serif;
+    background-color: #fafafa;
+}
+.content-wrapper {
+    margin-top: 100px;
+}
+.content-wrapper .post-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    max-width: 625px;
+    flex-direction: column;
+    border: 1px solid #efefef;
+    background-color: #ffffff;
+    margin: 0 auto 40px auto;
+    padding: 0 0 20px 0;
+}
+.content-wrapper .post-wrapper .header {
+    height: 30px;
+    padding: 16px;
+    border: 1px solid #efefef;
+}
+.content-wrapper .post-wrapper .header .profile-pic {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.content-wrapper .post-wrapper .header .profile-pic img {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
+.content-wrapper .post-wrapper .header .username {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: 600;
+    color: #262626;
+}
+.content-wrapper .post-wrapper .post-image img {
+    width: 100%;
+    height: 400px;
+}
+.content-wrapper .post-wrapper .social-share-wrapper {
+    padding: 20px 16px 0 16px;
+}
+.content-wrapper .post-wrapper .social-share-wrapper .likes-count {
+    padding: 20px 0;
+    font-weight: 600;
+    font-size: 14px;
+}
+.content-wrapper .post-wrapper .post-description {
+    padding: 0 16px 16px 16px;
+}
+.content-wrapper .post-wrapper .social-share-wrapper img {
+    width: 25px;
+    height: 25px;
+    margin-right: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}

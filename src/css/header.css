@@ -1,9 +1,26 @@
 .header-wrapper {
-
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    top: 0;
+    border-bottom: 1px solid lightgrey;
+    background-color: #ffffff;
+}
+.header-wrapper .inline-wrapper {
+    width: 31%;
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+.header-wrapper .logo-wrapper img {
+    display: inline-block;
+    vertical-align: middle;
 }
 .header-wrapper .logo-wrapper img:nth-child(1){
     width: 24px;
     height: 24px;
+    margin-right: 10px;
 }
 .header-wrapper .logo-wrapper img:nth-child(2){
     width: 103px;
@@ -11,11 +28,14 @@
 }
 .header-wrapper .search-wrapper input{
     width: 215px;
-    height: 28px;
+    height: 17px;
     border: 1px solid lightgrey;
+    background-color: #f7f7f7;
     padding: 5px;
 }
 .header-wrapper .profile-info-wrapper img {
     width: 24px;
     height: 24px;
+    margin-right: 45px;
+    cursor: pointer;
 }

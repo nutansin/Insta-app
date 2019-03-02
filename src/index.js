@@ -1,11 +1,35 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Header from "./header.jsx";
-import './css/header.css';
+import Posts from "./components/posts";
+import Profile from "./components/profile";
 
+import { BrowserRouter, Link, Route } from 'react-router-dom';
 
 const Index = () => {
-  return <div>Hello React 11!</div>;
+  return <div>Instagram</div>;
 };
 
-ReactDOM.render(<Header />, document.getElementById("root"));
+const AppConst = () =>(
+  <div>
+    <Link to='/a' > <Posts/> </Link>
+  </div>
+)
+
+
+
+const ProfileConst = () =>(
+  <div>
+    <Link to='/profile'> <Profile/></Link>
+  </div>
+)
+
+ReactDOM.render(
+  <BrowserRouter>
+    <div>
+      <Route path="/" component={AppConst} />
+      <Route path="/profile" component={ProfileConst}/>
+
+    </div>
+
+  </BrowserRouter>
+, document.getElementById("root"));
