@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import $ from 'jquery';
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import Route from 'react-router-dom/Route';
 import Profile from './profile';
@@ -16,11 +17,7 @@ export class Header extends Component {
   render() {
       
     return (
-      // <Router history={browserHistory}>
         <div>
-        {/* <Route exact path="/" component={Posts}>
-            <Route exact path="profile" component={Profile}/>
-        </Route> */}
             <div className="header-wrapper">
               <div className="logo-wrapper inline-wrapper">
               {/* <Link to="/"> */}
@@ -34,13 +31,12 @@ export class Header extends Component {
               <div className="profile-info-wrapper inline-wrapper">
                   <img src={require('../img/explore.png')} alt=""/>
                   <img src={require('../img/like.png')} alt=""/>
-                  <Link to="/profile">
+                  {/* <Link to="/profile"> */}
                   <img src={require('../img/profile.png')} alt=""/>
                   {/* </Link> */}
               </div>
             </div>
         </div>
-      // </Router>
     )
   }
 }
