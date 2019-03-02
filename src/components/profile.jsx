@@ -41,7 +41,6 @@ import '../css/profile.css';
 							<div><span>{userDetail.social_counts.posts}</span><span>Posts</span></div>
 							<div><span>{userDetail.social_counts.followers}</span><span>Followers</span></div>
 							<div><span>{userDetail.social_counts.following}</span><span>Following</span></div>
-							
 						</div>
 					</div>
 					<div className="nav-tabs">

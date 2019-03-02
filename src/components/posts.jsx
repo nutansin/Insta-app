@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
-import Header from './header';
+import like from './../img/like.png'
+import comment_icon from './../img/comment_icon.png'
+import download_icon from './../img/download_icon.png'
+
+
 import '../css/post.css';
 
 class Posts extends Component {
@@ -22,7 +26,6 @@ class Posts extends Component {
     render() {
 		return (
             <div>
-                <Header />
                 <div className="content-wrapper">
                     {this.state.posts.map((post) =>
                         <div className="post-wrapper">
@@ -35,9 +38,9 @@ class Posts extends Component {
                             </div>
                             <div className="social-share-wrapper">
                                 <div>
-                                    <img src={require('../img/like.png')} alt=""/>
-                                    <img src={require('../img/comment_icon.png')} alt=""/>
-                                    <img src={require('../img/download_icon.png')} alt="" onClick={this.redirectToProfile}/>
+                                    <img src={like} alt=""/>
+                                    <img src={comment_icon} alt=""/>
+                                    <img src={download_icon} alt="" onClick={this.redirectToProfile}/>
                                 </div>
                                 <div className="likes-count">{post.likes} <span>likes</span></div>
                             </div>
