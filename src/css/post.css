@@ -34,12 +34,18 @@ body {
     height: 30px;
     border-radius: 15px;
 }
-.content-wrapper .post-wrapper .header .username {
+.content-wrapper .post-wrapper .header .user-info {
     display: inline-block;
     vertical-align: middle;
+}
+.content-wrapper .post-wrapper .header .user-info .username {
     font-size: 14px;
     font-weight: 600;
     color: #262626;
+}
+.content-wrapper .post-wrapper .header .user-info .location {
+    font-size: 13px;
+    margin-top: 4px;
 }
 .content-wrapper .post-wrapper .post-image img {
     width: 100%;

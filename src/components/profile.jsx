@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import $ from 'jquery';
 import Header from './header';
-import userDetail from './../user.json'
+import userDetail from './../user.json';
+import Editor from './editor';
 import '../css/profile.css';
 
  class Profile extends Component {
   constructor() {
 		super();
 		this.state = {
-			posts: []
+			posts: [],
+			render:'',
+			showEditor: false
 		};
   }
 
@@ -21,12 +24,28 @@ import '../css/profile.css';
 			.catch(err => {
 				console.log('Error happened during fetching!', err);
 			});
+		$(function() { $('textarea').froalaEditor({
+			toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'color', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'emoticons', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|', 'print', 'help', 'html', '|', 'undo', 'redo'],
+			height: 400,
+			width: 800
+		}); }); 
 	}
+	
+	loadUploader(compName, e) {
+		this.setState({showEditor: true});
+		// return <Editor popup={this.state.showEditor}/>
+	}
+	// renderSubComp(){
+	// 	if(this.state.render != '')
+	// 	return <Editor popup={this.state.showEditor}/>
+    // }
 
 	render() {
+		console.log(" this.props.showEditor ", this.state.showEditor)
+		let ImageEditorFlag= this.state.showEditor ? '<Editor/>':'' ;
+		console.log("ImageEditorFlag ", ImageEditorFlag)
 		return (
 			<div>
-				<Header />
 				<div className="user-detail-wrapper">
 					<div className="user-pic">
 						<img src={userDetail.user.profile_pic_url} alt=""/>
@@ -34,7 +53,7 @@ import '../css/profile.css';
 					<div className="user-info">
 						<div className="details">
 							<div className="username">{userDetail.user.username}</div>
-							<div className="edit-profile-btn">Edit Profile</div>
+							<div className="upload-btn" onClick={this.loadUploader}>Upload</div>
 							<div className="settings"><img src={require('../img/settings_icon.png')}  alt=""/></div>
 						</div>
 						<div className="social-share-wrapper">
@@ -55,7 +74,9 @@ import '../css/profile.css';
 						</div>
 					)}
 				</div>
-				
+				{/* <Editor popup={this.state.showEditor}/> */}
+				{ImageEditorFlag}
+				{/* {this.renderSubComp()} */}
 			</div>
 		);
   }

@@ -31,7 +31,10 @@ class Posts extends Component {
                         <div className="post-wrapper">
                             <div className="header">
                                 <div className="profile-pic"><img src={post.user.profile_image.small} alt=""/></div>
-                                <div className="username">{post.user.username}</div>
+                                <div className="user-info">
+                                    <div className="username">{post.user.username}</div>
+                                    <div className="location">{post.user.location}</div>
+                                </div>
                             </div>
                             <div className="post-image">
                                 <img src={post.urls.small} alt={post.user.username}/>

@@ -16,13 +16,18 @@ import {
 export class Header extends Component {
   constructor(props) {
     super();
+
+    this.state ={
+      userName: ""
+    }
   }
 
   redirectToProfile() {
     this.props.history.push('/profile');
   }
   render() {
-      
+    console.log("object", this.props);
+    
     return (
         <div>
             <div className="header-wrapper">
@@ -38,7 +43,8 @@ export class Header extends Component {
               <div className="profile-info-wrapper inline-wrapper">
                   <img src={explore} alt=""/>
                   <img src={like} alt=""/>
-                  <Link to="/profileLink">
+                  {/*  username need to get from the redux store */}
+                  <Link to="/profileLink/hitenpatel">
                   <img src={profile} />
                   </Link>
               </div>

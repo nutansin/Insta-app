@@ -1,0 +1,32 @@
+.fr-box {
+    width: 800px;
+    height: 300px;
+    position: absolute;
+    top:55px;
+    right:0;
+    left: 0;
+    margin: auto;
+}
+.btn-wrapper {
+    width: 760px;
+    height: 18px;
+    position: absolute;
+    top: 69%;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border: 1px solid lightgrey;
+}
+.btn-wrapper #save-btn, .btn-wrapper #close-btn {
+    background-color: #3897f0;
+    border: 1px solid #3897f0;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 600;
+    margin-right: 10px;
+    padding: 7px 15px;
+    text-align: center;
+    cursor: pointer;
+}

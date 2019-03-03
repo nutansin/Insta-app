@@ -15,12 +15,13 @@ import {
 class App extends Component {
   render() {
     return (
-                  <Router>   
+                <Router>   
                 <div>  
                         <Header/>  
                         <Switch>
                             <Route exact path='/' component={Posts}></Route>
                             <Route exact path='/profileLink' component={Profile}></Route>
+                            <Route exact path='/profileLink/:username' component={Profile}></Route>
                         </Switch>   
                 </div>       
             </Router>
