@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import like from './../img/like.png'
 import comment_icon from './../img/comment_icon.png'
 import download_icon from './../img/download_icon.png'
-
-
 import '../css/post.css';
 
 class Posts extends Component {

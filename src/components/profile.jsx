@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import $ from 'jquery';
-import Header from './header';
 import userDetail from './../user.json';
 import Editor from './editor';
 import '../css/profile.css';
@@ -15,7 +13,7 @@ import '../css/profile.css';
 		};
   }
 
-	componentDidMount() {
+	componentDidMount=()=> {
 		fetch('https://api.unsplash.com/photos/?client_id=e8a1568ebfbe6e258843b98cf7524eef5d286b3cf540345fe13e2f558f9b9165')
 		.then(res => res.json())
 		.then(data => {
@@ -26,11 +24,11 @@ import '../css/profile.css';
 		});
 	}
 	
-	loadUploader(compName, e) {
+	loadUploader=(compName, e)=> {
 		this.setState({showEditor: true});
 	}
 
-	render() {
+	render=()=> {
 		let ImageEditorFlag= this.state.showEditor ? '<Editor/>':'' ;
 		console.log("ImageEditorFlag ", ImageEditorFlag)
 		return (
@@ -52,10 +50,10 @@ import '../css/profile.css';
 						</div>
 					</div>
 					<div className="nav-tabs">
-						<a href="" className="active"><span>Posts</span></a>
-						<a href=""><span>Igtv</span></a>
-						<a href=""><span>Saved</span></a>
-						<a href=""><span>Tagged</span></a>
+						<a href="#" className="active"><span>Posts</span></a>
+						<a href="#"><span>Igtv</span></a>
+						<a href="#"><span>Saved</span></a>
+						<a href="#"><span>Tagged</span></a>
 					</div>
 					{this.state.posts.map((post) =>
 						<div className="post-image">

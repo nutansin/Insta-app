@@ -3,16 +3,7 @@ import Posts from "./components/posts";
 import Profile from "./components/profile";
 import Header from './components/header';
 import HashTagProfile from './components/hashTagProfile';
-
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from 'react-router-dom'
-
-
-
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 
 class App extends Component {
   render() {

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom';
+import { render, shallow } from 'enzyme';
 import $ from 'jquery';
-import Profile from './profile'
-import Posts from './posts'
+import { Redirect, Link, withRouter } from 'react-router-dom'
+import classnames from 'classnames';
 import userDetail from './../user.json';
 import '../css/header.css'
 import insta_logo from './../img/insta_logo.png'
@@ -9,41 +11,39 @@ import insta_text from './../img/insta_text.png'
 import explore from './../img/explore.png'
 import profile from './../img/profile.png'
 import like from './../img/like.png'
-import { Redirect, Link } from 'react-router-dom'
+
 
 export class Header extends Component {
   constructor() {
     super();
+    this.listRef = React.createRef();
     this.state = {
       userName: '',
       value: '',
       tags: [],
-      redirectToProfile: false
+      redirectToProfile: false,
+      cursor: 0,
+      result: [],
+      listSelected: null,
+      next: null,
+      $tagList:[],
+      activeTag:''
     }
   }
 
   submitTagForm=(event)=> {
-    event.preventDefault();
-    this.setState({
-      redirectToProfile: true
-    })
+    this.props.history.push(this.state.activeTag.attr('href'));
   }
 
   tagChange=(event)=> {
     this.setState({value: event.target.value});
   }
 
-  renderRedirect=()=> {
-    if (this.state.redirect) {
-      return <Redirect to={this.state.value} />
-    }
-  }
-
   resetList=()=> {
     this.setState({ tags: [] });
   }
 
-  keyPress=(event)=> {
+  fetchTagSuggestion=(event)=> {
     fetch('https://www.instagram.com/web/search/topsearch/?context=blended&query='+encodeURIComponent(this.state.value)+'&rank_token=0.43305520620017&include_reel=true')
     .then(res => res.json())
     .then(data => {
@@ -53,11 +53,43 @@ export class Header extends Component {
       console.log('Error happened during fetching!', err);
     });
   } 
-  render() {
-    console.log("userDetail.user.username ",userDetail.user.username)
+
+  navigateList=(e)=> {
+    if(e.which === 40) {
+
+        if(this.state.listSelected) {
+          this.state.listSelected.removeClass('selected');
+            this.state.next = this.state.listSelected.next();
+            if(this.state.next.length > 0) {
+              this.state.listSelected = this.state.next.addClass('selected');
+            } else {
+              this.state.listSelected = this.state.$tagList.eq(0).addClass('selected');
+            }
+        } else {
+          this.state.listSelected = this.state.$tagList.eq(1).addClass('selected');
+        }
+    } else if(e.which === 38) {
+        if(this.state.listSelected) {
+            this.state.listSelected.removeClass('selected');
+            this.state.next = this.state.listSelected.prev();
+            if(this.state.next.length > 0) {
+              this.state.listSelected = this.state.next.addClass('selected');
+            } else {
+              this.state.listSelected = this.state.$tagList.last().addClass('selected');
+            }
+        } else {
+          this.state.listSelected = this.state.$tagList.last().addClass('selected');
+        }
+    }
+  }
+
+  render=()=> {
+        this.state.$tagList = $('.tag-list'); 
+        this.state.activeTag = $('.tag-list.selected'); 
+        this.state.listSelected =  this.state.activeTag; 
+
     return (
         <div>
-            {/* {this.renderRedirect()} */}
             <div className="header-wrapper">
               <div className="logo-wrapper inline-wrapper">
               <Link to="/">
@@ -67,11 +99,11 @@ export class Header extends Component {
               </div>
               <div className="search-wrapper inline-wrapper">
                 <form onSubmit={this.submitTagForm}>
-                    <input type="text" value={this.state.value} onChange={this.tagChange} onKeyUp={this.keyPress} placeholder="Search"/>
+                    <input type="text" value={this.state.value} onChange={this.tagChange} onKeyUp={this.fetchTagSuggestion} onKeyDown={this.navigateList} placeholder="Search"/>
                     <input type="submit" value="Submit"/>
                     <div className="tag-suggestion-wrapper">
-                        {this.state.tags.map((tag) =>
-                              <Link to={'/explore/tags/'+tag.hashtag.name} onClick={this.resetList}>
+                        {this.state.tags.map((tag, index) =>
+                              <Link to={'/explore/tags/'+tag.hashtag.name} onClick={this.resetList} className={ classnames('tag-list', { selected: index === 0 })}>
                                   <div>#</div>
                                   <div>
                                       <span>#{tag.hashtag.name}</span>
@@ -86,9 +118,8 @@ export class Header extends Component {
               <div className="profile-info-wrapper inline-wrapper">
                   <img src={explore} alt=""/>
                   <img src={like} alt=""/>
-                  {/*  username need to get from the redux store */}
                   <Link to={'/profile/'+userDetail.user.username}>
-                  <img src={profile} />
+                    <img src={profile} alt="" />
                   </Link>
               </div>
             </div>
@@ -96,4 +127,4 @@ export class Header extends Component {
     )
   }
 }
-export default Header
+export default withRouter(Header);

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import $ from 'jquery';
 import '../css/hashTagProfile.css';
 
  class HashTagProfile extends Component {
@@ -11,7 +10,7 @@ import '../css/hashTagProfile.css';
 		};
   }
 
-	componentDidMount() {
+	componentDidMount=()=> {
 		var pathname = this.props.location.pathname
 		pathname = pathname.substring(1);
 		var param = pathname.split('/');
@@ -28,7 +27,7 @@ import '../css/hashTagProfile.css';
 		});
 	}
 
-	render() {
+	render=()=> {
 		
 		return (
 			<div>
@@ -49,7 +48,7 @@ import '../css/hashTagProfile.css';
                     <div className="post-title">Top Posts</div>
 					{this.state.posts.map((post) =>
 						<div className="post-image">
-							<img src={post.node.display_url} alt="image"/>
+							<img src={post.node.display_url} alt=""/>
 						</div>
 					)}
 				</div>
