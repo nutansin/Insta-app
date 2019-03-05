@@ -10,7 +10,7 @@ import insta_logo from './../img/insta_logo.png'
 import insta_text from './../img/insta_text.png'
 import explore from './../img/explore.png'
 import profile from './../img/profile.png'
-import like from './../img/like.png'
+import unlike from './../img/unlike.png'
 
 
 export class Header extends Component {
@@ -117,7 +117,7 @@ export class Header extends Component {
               </div>
               <div className="profile-info-wrapper inline-wrapper">
                   <img src={explore} alt=""/>
-                  <img src={like} alt=""/>
+                  <img src={unlike} alt=""/>
                   <Link to={'/profile/'+userDetail.user.username}>
                     <img src={profile} alt="" />
                   </Link>

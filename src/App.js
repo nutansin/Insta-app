@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Posts from "./components/posts";
+import Feed from "./components/feed";
 import Profile from "./components/profile";
 import Header from './components/header';
 import HashTagProfile from './components/hashTagProfile';
@@ -12,7 +12,7 @@ class App extends Component {
                 <div>  
                         <Header/>  
                         <Switch>
-                            <Route exact path='/' component={Posts}></Route>
+                            <Route exact path='/' component={Feed}></Route>
                             <Route exact path='/profile/:username' component={Profile}></Route>
                             <Route path='/explore/tags/:username' component={HashTagProfile}></Route>
                         </Switch>   

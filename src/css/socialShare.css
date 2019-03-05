@@ -1,0 +1,46 @@
+.social-share-overlay {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    top: 0;
+    right: 0;
+    bottom:0;
+    left: 0;
+    z-index: 1;
+}
+.social-link-share-wrapper {
+    width: 300px;
+    height: 300px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom:0;
+    left: 0;
+    margin: auto;
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 8px;
+    background: white;
+    padding: 20px;
+    z-index: 2;
+}
+.social-wrapper.hidden {
+    display: none;
+}
+.social-wrapper.show {
+    display: block !important;
+}
+.social-link-share-wrapper .title {
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 15px;
+    text-align: center;
+}
+.social-link-share-wrapper .share-button-wrapper a {
+    display: block;
+    color: black;
+    padding: 20px;
+    font-weight: 600;
+    font-size: 17px;
+    text-decoration: none;
+}
+.social-link-share-wrapper .share-button-wrapper a i {
+    margin-right: 20px;
+}
