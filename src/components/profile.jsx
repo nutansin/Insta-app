@@ -24,16 +24,11 @@ import '../css/profile.css';
 		});
 	}
 	
-	// loadUploader=(compName, e)=> {
-	// 	this.setState({showEditor: true});
-	// }
 	toggleEditor=()=> {
 		this.setState({showEditor: !this.state.showEditor})
 	}
 
 	render=()=> {
-		let ImageEditorFlag= this.state.showEditor ? '<Editor/>':'' ;
-		console.log("ImageEditorFlag ", ImageEditorFlag)
 		return (
 			<div>
 				<div className="profile-detail-wrapper">
