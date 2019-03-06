@@ -20,7 +20,6 @@ import '../css/hashTagProfile.css';
 		.then(data => {
             this.setState({posts: data.graphql.hashtag.edge_hashtag_to_top_posts.edges});
             this.setState({userInfo: data.graphql.hashtag})
-            console.log(this.state.userInfo, 'count');
 		})
 		.catch(err => {
 			console.log('Error happened during fetching!', err);
@@ -39,8 +38,6 @@ import '../css/hashTagProfile.css';
 						<div className="details">
 							<div className="username">#{this.state.userInfo.name}</div>
                             <button className="follow-btn">Follow</button>
-							{/* <div className="upload-btn" onClick={this.loadUploader}>Upload</div> */}
-							{/* <div className="settings"><img src={require('../img/settings_icon.png')}  alt=""/></div> */}
 						</div>
 						
 					</div>

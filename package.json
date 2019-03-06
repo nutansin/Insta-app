@@ -5,7 +5,6 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "codemirror": "^5.44.0",
-    "enzyme": "^3.9.0",
     "font-awesome": "^4.7.0",
     "froala-editor": "^2.9.3",
     "jquery": "^3.3.1",

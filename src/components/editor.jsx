@@ -12,21 +12,15 @@ import '../css/editor.css';
 class Editor extends Component {
     constructor() {
           super();
-
           this.state={
               uploadedImage:''
           }
     }
-    closeEditor() {
-        console.log($('#froala-editor').froalaEditor());
-        $('.fr-box').hide();
-        $('.btn-wrapper').hide();
-        // if ($('#froala-editor').data('froala.editor')) {
-        //   $('#froala-editor').froalaEditor('destroy');
-        // }
+    closeEditor=()=> {
+        this.props.hideEditor();
     }
 
-    componentDidMount() {
+    componentDidMount=()=> {
         $(function() { 
             $('textarea').froalaEditor({
                 toolbarButtons: ['insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'emoticons', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|', 'print', 'help', 'html', '|', 'undo', 'redo'],
@@ -58,21 +52,14 @@ class Editor extends Component {
             .on('froalaEditor.image.inserted', function (e, editor, $img, response) {
                 // Image was inserted in the editor.
                 console.log(e.target.files,$img, response);
-            }).on('froalaEditor.initialized', function (e, editor) {
-                editor.events.bindClick($('body'), '#close-btn', function () {
-                  editor.hide();
-                });
-              })
-    }); 
+            })
+        }); 
     }
 
-
-   
-
-    render() {
-        console.log("PUBLIC_URL => ", )
+    render=()=> {
         return (
-            <div>
+            <div className="editor-wrapper">
+                <div onClick={this.closeEditor} className="editor-overlay"></div>
                 <textarea id="froala-editor" name="content"></textarea>
                 <div className="btn-wrapper">
                     <button id="save-btn">Save</button>

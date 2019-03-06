@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom';
-import { render, shallow } from 'enzyme';
 import $ from 'jquery';
-import { Redirect, Link, withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import classnames from 'classnames';
 import userDetail from './../user.json';
 import '../css/header.css'

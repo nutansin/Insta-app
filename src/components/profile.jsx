@@ -4,14 +4,14 @@ import Editor from './editor';
 import '../css/profile.css';
 
  class Profile extends Component {
-  constructor() {
-		super();
-		this.state = {
-			posts: [],
-			render:'',
-			showEditor: false
-		};
-  }
+	constructor() {
+			super();
+			this.state = {
+				posts: [],
+				render:'',
+				showEditor: false
+			};
+	}
 
 	componentDidMount=()=> {
 		fetch('https://api.unsplash.com/photos/?client_id=e8a1568ebfbe6e258843b98cf7524eef5d286b3cf540345fe13e2f558f9b9165')
@@ -24,8 +24,11 @@ import '../css/profile.css';
 		});
 	}
 	
-	loadUploader=(compName, e)=> {
-		this.setState({showEditor: true});
+	// loadUploader=(compName, e)=> {
+	// 	this.setState({showEditor: true});
+	// }
+	toggleEditor=()=> {
+		this.setState({showEditor: !this.state.showEditor})
 	}
 
 	render=()=> {
@@ -33,14 +36,14 @@ import '../css/profile.css';
 		console.log("ImageEditorFlag ", ImageEditorFlag)
 		return (
 			<div>
-				<div className="user-detail-wrapper">
+				<div className="profile-detail-wrapper">
 					<div className="user-pic">
 						<img src={userDetail.user.profile_pic_url} alt=""/>
 					</div>
 					<div className="user-info">
 						<div className="details">
 							<div className="username">{userDetail.user.username}</div>
-							<div className="upload-btn" onClick={this.loadUploader}>Upload</div>
+							<div className="upload-btn" onClick={this.toggleEditor}>Upload</div>
 							<div className="settings"><img src={require('../img/settings_icon.png')}  alt=""/></div>
 						</div>
 						<div className="social-share-wrapper">
@@ -61,9 +64,7 @@ import '../css/profile.css';
 						</div>
 					)}
 				</div>
-				{/* <Editor popup={this.state.showEditor}/> */}
-				{ImageEditorFlag}
-				{/* {this.renderSubComp()} */}
+				{this.state.showEditor ? <Editor hideEditor={this.toggleEditor}/>:null}
 			</div>
 		);
   }

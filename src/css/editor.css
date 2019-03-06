@@ -1,25 +1,39 @@
-.fr-box {
+.editor-wrapper {
+    position: relative;
+}
+.editor-wrapper .editor-overlay {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    top: 0;
+    right: 0;
+    bottom:0;
+    left: 0;
+    z-index: 1;
+}
+.editor-wrapper .fr-box {
     width: 800px;
     height: 300px;
-    position: absolute;
+    position: fixed;
     top:55px;
     right:0;
     left: 0;
     margin: auto;
+    z-index: 2;
 }
-.btn-wrapper {
+.editor-wrapper .btn-wrapper {
     width: 760px;
     height: 18px;
-    position: absolute;
-    top: 69%;
+    position: fixed;
+    top: 490px;
     right: 0;
     left: 0;
     margin: auto;
     background: white;
-    padding: 20px;
+    padding: 20px 19px 30px 19px;
     border: 1px solid lightgrey;
+    z-index: 2;
 }
-.btn-wrapper #save-btn, .btn-wrapper #close-btn {
+.editor-wrapper .btn-wrapper #save-btn, .btn-wrapper #close-btn {
     background-color: #3897f0;
     border: 1px solid #3897f0;
     border-radius: 4px;

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Posts from '../components/posts';
-import unlike from './../img/unlike.png';
-import like from './../img/like_icon.png';
 import '../css/post.css';
 
 class Feed extends Component {
