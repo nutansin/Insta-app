@@ -82,7 +82,7 @@ class Posts extends Component {
                         <div>
                             {likeUnlikeImg}
                             <img src={comment_icon} alt=""/>
-                            <img src={download_icon} alt="" onClick={this.sharePopupShow}/>
+                            <img src={download_icon} alt="" onClick={this.toggleSharePopup}/>
                             {bookmarkImg}
                         </div>
                         

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TwitterShare from 'react-twitter-share-link';
 import FacebookShare from 'react-facebook-share-link'
+import messenger from './../img/facebook-messenger.png'
 import '../css/socialShare.css';
 
 class socialShare extends Component {
@@ -29,7 +30,7 @@ class socialShare extends Component {
                         </TwitterShare>
                         <FacebookShare link={this.props.link}>
                             {link => (
-                                <a href={link} target='_blank'><i className="fa fa-facebook-messenger" aria-hidden="true"></i> Share to messenger</a>
+                                <a href={link} target='_blank'><img src={messenger} alt=""/> Share to messenger</a>
                             )}
                         </FacebookShare>
                     </div>

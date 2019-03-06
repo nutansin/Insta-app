@@ -44,3 +44,7 @@
 .social-link-share-wrapper .share-button-wrapper a i {
     margin-right: 20px;
 }
+.social-link-share-wrapper .share-button-wrapper a img {
+    width: 16px;
+    margin-right: 20px;
+}
