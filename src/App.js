@@ -4,21 +4,24 @@ import Profile from "./components/profile";
 import Header from './components/header';
 import HashTagProfile from './components/hashTagProfile';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
+import {Provider} from 'react-redux';
+import store from './store';
 
 class App extends Component {
   render() {
     return (
+          <Provider store={store}>
                 <Router>   
-                <div>  
+                    <div>  
                         <Header/>  
                         <Switch>
                             <Route exact path='/' component={Feed}></Route>
                             <Route exact path='/profile/:username' component={Profile}></Route>
                             <Route path='/explore/tags/:username' component={HashTagProfile}></Route>
                         </Switch>   
-                </div>       
-            </Router>
-    
+                    </div>       
+                </Router>
+          </Provider>
     )
   }
 }

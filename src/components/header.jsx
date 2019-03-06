@@ -41,6 +41,7 @@ export class Header extends Component {
 
   resetList=()=> {
     this.setState({ tags: [] });
+    console.log(this.state.tags);
   }
 
   fetchTagSuggestion=(event)=> {
