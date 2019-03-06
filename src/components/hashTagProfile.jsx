@@ -1,20 +1,33 @@
 import React, { Component } from 'react'
+import { browserHistory } from 'react-router';
 import '../css/hashTagProfile.css';
 
  class HashTagProfile extends Component {
-  constructor() {
-		super();
-		this.state = {
-            posts: [],
-            userInfo:{}
-		};
-  }
+	constructor() {
+			super();
+			this.state = {
+				posts: [],
+				userInfo:{},
+				hashTagUser:''
+			};
+	}
+	componentDidUpdate (prevProps) {
+		let { location: { pathname } } = this.props
 
+		if (prevProps.location.pathname === pathname) return
+		this.routeChanged();
+	}
+
+	routeChanged () {
+		this.fetchTagUser();
+	}
+  
 	componentDidMount=()=> {
+		this.fetchTagUser();
+	}
+	fetchTagUser=()=> {
 		var pathname = this.props.location.pathname
-		pathname = pathname.substring(1);
 		var param = pathname.split('/');
-		
 		fetch('https://www.instagram.com/explore/tags/'+(param[param.length-1])+'/?__a=1')
 		.then(res => res.json())
 		.then(data => {
@@ -27,7 +40,6 @@ import '../css/hashTagProfile.css';
 	}
 
 	render=()=> {
-		
 		return (
 			<div>
 				<div className="user-detail-wrapper">

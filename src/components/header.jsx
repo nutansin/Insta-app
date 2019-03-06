@@ -30,6 +30,8 @@ export class Header extends Component {
   }
 
   submitTagForm=(event)=> {
+    event.preventDefault();
+    this.resetList();
     this.props.history.push(this.state.activeTag.attr('href'));
   }
 
