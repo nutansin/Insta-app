@@ -3,6 +3,9 @@ import $ from 'jquery';
 import { Link, withRouter } from 'react-router-dom'
 import classnames from 'classnames';
 import userDetail from './../user.json';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {fetchTagSuggestion} from '../actions/postAction';
 import '../css/header.css'
 import insta_logo from './../img/insta_logo.png'
 import insta_text from './../img/insta_text.png'
@@ -18,7 +21,7 @@ export class Header extends Component {
     this.state = {
       userName: '',
       value: '',
-      tags: [],
+      // tags: [],
       redirectToProfile: false,
       cursor: 0,
       result: [],
@@ -28,6 +31,7 @@ export class Header extends Component {
       activeTag:''
     }
   }
+
 
   submitTagForm=(event)=> {
     event.preventDefault();
@@ -40,19 +44,20 @@ export class Header extends Component {
   }
 
   resetList=()=> {
-    this.setState({ tags: [] });
-    console.log(this.state.tags);
+    // this.setState({ tags: [] });
   }
 
   fetchTagSuggestion=(event)=> {
-    fetch('https://www.instagram.com/web/search/topsearch/?context=blended&query='+encodeURIComponent(this.state.value)+'&rank_token=0.43305520620017&include_reel=true')
-    .then(res => res.json())
-    .then(data => {
-      this.setState({ tags: data.hashtags });
-    })
-    .catch(err => {
-      console.log('Error happened during fetching!', err);
-    });
+    // fetch('https://www.instagram.com/web/search/topsearch/?context=blended&query='+encodeURIComponent(this.state.value)+'&rank_token=0.43305520620017&include_reel=true')
+    // .then(res => res.json())
+    // .then(data => {
+    //   this.setState({ tags: data.hashtags });
+    // })
+    // .catch(err => {
+    //   console.log('Error happened during fetching!', err);
+    // });
+
+    this.props.fetchTagSuggestion(this.state.value);
   } 
 
   navigateList=(e)=> {
@@ -88,7 +93,7 @@ export class Header extends Component {
         this.state.$tagList = $('.tag-list'); 
         this.state.activeTag = $('.tag-list.selected'); 
         this.state.listSelected =  this.state.activeTag; 
-
+        console.log(this.props.tags, 'tags');
     return (
         <div>
             <div className="header-wrapper">
@@ -103,7 +108,7 @@ export class Header extends Component {
                     <input type="text" value={this.state.value} onChange={this.tagChange} onKeyUp={this.fetchTagSuggestion} onKeyDown={this.navigateList} placeholder="Search"/>
                     <input type="submit" value="Submit"/>
                     <div className="tag-suggestion-wrapper">
-                        {this.state.tags.map((tag, index) =>
+                        {this.props.tags.map((tag, index) =>
                               <Link to={'/explore/tags/'+tag.hashtag.name} onClick={this.resetList} className={ classnames('tag-list', { selected: index === 0 })}>
                                   <div>#</div>
                                   <div>
@@ -128,4 +133,15 @@ export class Header extends Component {
     )
   }
 }
-export default withRouter(Header);
+
+Header.propTypes = {
+  fetchTagSuggestion: PropTypes.func.isRequired,
+  tags: PropTypes.array.isRequired
+}
+
+const mapStateToProps=(state)=> ({
+  tags: state.tags.tags
+})
+export default withRouter(connect(mapStateToProps, {fetchTagSuggestion})(Header));
+
+// export default withRouter(Header);
