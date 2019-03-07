@@ -17,14 +17,10 @@ import unlike from './../img/unlike.png'
 export class Header extends Component {
   constructor() {
     super();
-    this.listRef = React.createRef();
+
     this.state = {
-      userName: '',
       value: '',
-      // tags: [],
-      redirectToProfile: false,
       cursor: 0,
-      result: [],
       listSelected: null,
       next: null,
       $tagList:[],
@@ -44,19 +40,10 @@ export class Header extends Component {
   }
 
   resetList=()=> {
-    // this.setState({ tags: [] });
+    this.setState({ value: '' });
   }
 
   fetchTagSuggestion=(event)=> {
-    // fetch('https://www.instagram.com/web/search/topsearch/?context=blended&query='+encodeURIComponent(this.state.value)+'&rank_token=0.43305520620017&include_reel=true')
-    // .then(res => res.json())
-    // .then(data => {
-    //   this.setState({ tags: data.hashtags });
-    // })
-    // .catch(err => {
-    //   console.log('Error happened during fetching!', err);
-    // });
-
     this.props.fetchTagSuggestion(this.state.value);
   } 
 
@@ -93,14 +80,13 @@ export class Header extends Component {
         this.state.$tagList = $('.tag-list'); 
         this.state.activeTag = $('.tag-list.selected'); 
         this.state.listSelected =  this.state.activeTag; 
-        console.log(this.props.tags, 'tags');
     return (
         <div>
             <div className="header-wrapper">
               <div className="logo-wrapper inline-wrapper">
               <Link to="/">
-                  <img src={insta_logo} alt=""/>
-                  <img src={insta_text} alt=""/>
+                  <img src={insta_logo} alt="instagram"/>
+                  <img src={insta_text} alt="instagram logo"/>
               </Link>
               </div>
               <div className="search-wrapper inline-wrapper">
@@ -140,8 +126,6 @@ Header.propTypes = {
 }
 
 const mapStateToProps=(state)=> ({
-  tags: state.tags.tags
+  tags: state.tags.tag
 })
 export default withRouter(connect(mapStateToProps, {fetchTagSuggestion})(Header));
-
-// export default withRouter(Header);

@@ -3,7 +3,7 @@ import {FETCH_POSTS, FETCH_HASHTAG_USER, FETCH_TAG_SUGGESTION} from '../actions/
 const initialState = {
     postItem:[],
     user: [],
-    tags:[]
+    tag:[]
 };
 
 export default function(state = initialState, action) {
@@ -21,7 +21,7 @@ export default function(state = initialState, action) {
         case FETCH_TAG_SUGGESTION:
             return {
                 ...state,
-                tags: action.payload
+                tag: action.payload
             }
         default:
             return state;

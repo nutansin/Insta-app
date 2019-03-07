@@ -27,7 +27,7 @@ class Posts extends Component {
     
     toggleLikeAndCountDec=()=> {
         this.toggleLike();
-        this.setState({likeCount: --this.state.likeCount})
+        this.setState({likeCount: this.state.likeCount-1})
     }
     toggleUnlikeAndCountInc=()=> {
         this.toggleLike();

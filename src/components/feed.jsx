@@ -9,20 +9,9 @@ class Feed extends Component {
     constructor () {
         super();
         this.state = {
-            // posts: [],
             showLike: false
 		};
     }
-    // componentDidMount=()=> {
-	// 	fetch('https://api.unsplash.com/photos/?client_id=e8a1568ebfbe6e258843b98cf7524eef5d286b3cf540345fe13e2f558f9b9165')
-	// 		.then(res => res.json())
-	// 		.then(data => {
-	// 			this.setState({ posts: data });
-	// 		})
-	// 		.catch(err => {
-	// 			console.log('Error happened during fetching!', err);
-	// 		});
-    // }
     componentWillMount=()=> {
         this.props.fetchPosts();
     }
@@ -59,5 +48,3 @@ const mapStateToProps=(state)=> ({
     posts: state.posts.postItem
 })
 export default connect(mapStateToProps, {fetchPosts})(Feed);
-
-// export default Feed;
