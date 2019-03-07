@@ -17,16 +17,16 @@ import '../css/hashTagProfile.css';
 	}
 
 	componentWillMount=()=> {
-		var pathname = this.props.location.pathname
-		var param = pathname.split('/');
-		var query = param[param.length-1];
-        this.props.fetchHashtagUser(query);
+        this.props.fetchHashtagUser(this.getTagParam());
 	}
 	routeChanged () {
+        this.props.fetchHashtagUser(this.getTagParam());
+	}
+	getTagParam=()=> {
 		var pathname = this.props.location.pathname
 		var param = pathname.split('/');
 		var query = param[param.length-1];
-        this.props.fetchHashtagUser(query);
+		return query;
 	}
 
 	render=()=> {

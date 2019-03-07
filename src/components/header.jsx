@@ -40,7 +40,7 @@ export class Header extends Component {
   }
 
   resetList=()=> {
-    this.setState({ value: '' });
+    this.setState({ value: ''});
   }
 
   fetchTagSuggestion=(event)=> {

@@ -12,7 +12,6 @@ export const fetchPosts=()=> dispatch => {
 };
 
 export const fetchHashtagUser=(param)=> dispatch => {
-    console.log('fetch hashtag user');
     fetch('https://www.instagram.com/explore/tags/'+(param)+'/?__a=1')
     .then(res => res.json())
     .then(data => 
