@@ -1,9 +1,10 @@
-import {FETCH_POSTS, FETCH_HASHTAG_USER, FETCH_TAG_SUGGESTION} from '../actions/types';
+import {FETCH_POSTS, FETCH_HASHTAG_USER, FETCH_TAG_SUGGESTION, FETCH_SAVED_POST} from '../actions/types';
 
 const initialState = {
     postItem:[],
     user: [],
-    tag:[]
+    tag:[],
+    post:[]
 };
 
 export default function(state = initialState, action) {
@@ -22,6 +23,11 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 tag: action.payload
+            }
+        case FETCH_SAVED_POST:
+            return {
+                ...state,
+                post: action.payload
             }
         default:
             return state;

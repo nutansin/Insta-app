@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { browserHistory } from 'react-router';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {fetchHashtagUser} from '../actions/postAction';
 import '../css/hashTagProfile.css';
@@ -53,11 +51,6 @@ import '../css/hashTagProfile.css';
 			</div>
 		);
   }
-}
-
-HashTagProfile.propTypes = {
-    fetchHashtagUser: PropTypes.func.isRequired,
-    hashTagUser: PropTypes.array
 }
 
 const mapStateToProps=(state)=> ({

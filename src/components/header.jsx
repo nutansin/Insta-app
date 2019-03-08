@@ -3,7 +3,6 @@ import $ from 'jquery';
 import { Link, withRouter } from 'react-router-dom'
 import classnames from 'classnames';
 import userDetail from './../user.json';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {fetchTagSuggestion} from '../actions/postAction';
 import '../css/header.css'
@@ -118,11 +117,6 @@ export class Header extends Component {
         </div>
     )
   }
-}
-
-Header.propTypes = {
-  fetchTagSuggestion: PropTypes.func.isRequired,
-  tags: PropTypes.array.isRequired
 }
 
 const mapStateToProps=(state)=> ({

@@ -1,27 +1,16 @@
 import React, { Component } from 'react'
 import userDetail from './../user.json';
 import Editor from './editor';
+import {connect} from 'react-redux';
+import {fetchSavedPost} from '../actions/postAction';
 import '../css/profile.css';
 
  class Profile extends Component {
 	constructor() {
 			super();
 			this.state = {
-				posts: [],
-				render:'',
 				showEditor: false
 			};
-	}
-
-	componentDidMount=()=> {
-		fetch('https://api.unsplash.com/photos/?client_id=e8a1568ebfbe6e258843b98cf7524eef5d286b3cf540345fe13e2f558f9b9165')
-		.then(res => res.json())
-		.then(data => {
-			this.setState({ posts: data });
-		})
-		.catch(err => {
-			console.log('Error happened during fetching!', err);
-		});
 	}
 	
 	toggleEditor=()=> {
@@ -53,11 +42,11 @@ import '../css/profile.css';
 						<a href="#"><span>Saved</span></a>
 						<a href="#"><span>Tagged</span></a>
 					</div>
-					{this.state.posts.map((post) =>
+					{this.props.savedPost?this.props.savedPost.map((post) =>
 						<div className="post-image">
-							<img src={post.urls.small} alt="image"/>
+							<img src={post.link} alt="image"/>
 						</div>
-					)}
+					):null}
 				</div>
 				{this.state.showEditor ? <Editor hideEditor={this.toggleEditor}/>:null}
 			</div>
@@ -65,4 +54,7 @@ import '../css/profile.css';
   }
 }
 
-export default Profile
+const mapStateToProps=(state)=> ({
+    savedPost: state.savedPost.post
+})
+export default connect(mapStateToProps, {fetchSavedPost})(Profile);
