@@ -29,9 +29,9 @@ class Feed extends Component {
 		return (
             <div>
                 <div className="content-wrapper">
-                {this.props.posts.map((post, index) =>{
+                {this.props.posts ? this.props.posts.map((post, index) =>{
                     return <Posts post={post}/>
-                })}
+                }):null}
                 </div>
             </div>
 		);

@@ -93,7 +93,7 @@ export class Header extends Component {
                     <input type="text" value={this.state.value} onChange={this.tagChange} onKeyUp={this.fetchTagSuggestion} onKeyDown={this.navigateList} placeholder="Search"/>
                     <input type="submit" value="Submit"/>
                     <div className="tag-suggestion-wrapper">
-                        {this.props.tags.map((tag, index) =>
+                        {this.props.tags ? this.props.tags.map((tag, index) =>
                               <Link to={'/explore/tags/'+tag.hashtag.name} onClick={this.resetList} className={ classnames('tag-list', { selected: index === 0 })}>
                                   <div>#</div>
                                   <div>
@@ -102,7 +102,7 @@ export class Header extends Component {
                                   </div>
                                   
                               </Link>
-                        )}
+                        ):null}
                     </div>
                 </form> 
               </div>

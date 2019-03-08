@@ -30,7 +30,7 @@ import '../css/hashTagProfile.css';
 	render=()=> {
 		return (
 			<div>
-				{this.props.hashTagUser[0] ? <div className="user-detail-wrapper">
+				{this.props.hashTagUser ? <div className="user-detail-wrapper">
 					<div className="user-pic">
 						<img src={this.props.hashTagUser[0].graphql.hashtag.profile_pic_url} alt=""/>
 					</div>
@@ -54,7 +54,7 @@ import '../css/hashTagProfile.css';
 }
 
 const mapStateToProps=(state)=> ({
-    hashTagUser: state.tagUser.user
+    hashTagUser: state.tagUser.profile
 });
 
 export default connect(mapStateToProps, {fetchHashtagUser})(HashTagProfile);

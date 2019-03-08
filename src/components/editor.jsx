@@ -89,5 +89,3 @@ const mapStateToProps=(state)=> ({
     savedPost: state.savedPost.post
 })
 export default connect(mapStateToProps, {fetchSavedPost})(Editor);
-
-

@@ -42,7 +42,7 @@ import '../css/profile.css';
 						<a href="#"><span>Saved</span></a>
 						<a href="#"><span>Tagged</span></a>
 					</div>
-					{this.props.savedPost?this.props.savedPost.map((post) =>
+					{this.props.savedPost ? this.props.savedPost.map((post) =>
 						<div className="post-image">
 							<img src={post.link} alt="image"/>
 						</div>
